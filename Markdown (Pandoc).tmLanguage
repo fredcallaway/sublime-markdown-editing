@@ -1532,7 +1532,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\$)((?:[^$]|(?&lt;=\\)\$)*)(\1)</string>
+			<string>(\$\$?)((?:[^$]|(?&lt;=\\)\$)*)(\1)</string>
 			<key>name</key>
 			<string>markup.raw.inline.markdown</string>
 		</dict>
@@ -1544,17 +1544,25 @@
 					<key>comment</key>
 					<string>Pandoc citations</string>
 					<key>match</key>
-					<string>[\s\[](@[^;,\s]*)\b</string>
+					<string>[\s\[](-?@[^;,\s]*)\b</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.other.reference.citation.markdownn</string>
+							<string>constant.other.reference.citation.markdown</string>
 						</dict>
 					</dict>
 					<key>name</key>
 					<string>meta.reference.citation.markdown</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Inline LaTeX code</string>
+					<key>match</key>
+					<string>\\[a-z]*\*?(\[.*\])?\{.*\}</string>
+					<key>name</key>
+					<string>meta.latex.markdown</string>
 				</dict>
 				<dict>
 					<key>comment</key>
